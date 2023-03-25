@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
       foodId: DataTypes.INTEGER,
       ingredientId: DataTypes.INTEGER,
     },
-    { timestamps: false },
     {
+      timestamps: false,
       sequelize,
       modelName: "FIjunction",
     }

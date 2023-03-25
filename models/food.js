@@ -26,8 +26,6 @@ module.exports = (sequelize, DataTypes) => {
           food.image = "https://via.placeholder.com/100x100";
         },
       },
-    },
-    {
       sequelize,
       modelName: "food",
     }
