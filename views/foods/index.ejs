@@ -1,0 +1,76 @@
+<%- include('../header') %>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-4" href="#">Resto<span class="text-secondary opacity-50">Kita</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-grid-fill"></i> Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Food</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Ingredient</a>
+        </li>
+      </ul>
+
+      <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill fs-5"></i> <span class="opacity-50">Hi!, owner</span></button>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Profile</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- /Navbar -->
+
+<div class="container my-5">
+  <div class="row border border-light-subtle p-5 rounded-3">
+    <div class="col">
+      <h3 class="fw-bold">Foods Page</h3>
+      <a class="btn btn-primary btn-sm m-4 opacity-75 ms-auto divider" href="/pirates/create">+ Create</a>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% foods.forEach(food => { %>
+          <tr>
+            <th scope="row"><%= food.id %></th>
+            <td><%= food.name %></td>
+            <td><img src="<%= food.image %>" alt="" width="100px"></td>
+            <td><%= food.price %></td>
+            <td>
+              <a class="btn btn-sm btn-danger opacity-80" href="/foods/delete/<%= food.id %>"> <i class="bi bi-trash"></i></i></a>
+              
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include('../footer.ejs'); -%>

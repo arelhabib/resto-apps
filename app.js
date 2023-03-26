@@ -1,23 +1,15 @@
 require("dotenv").config();
 const express = require("express");
-const connectDB = require("./models");
-
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.json({ message: "helloworld" });
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(__dirname + "/public"));
 
-//cek koneksi ke db dulu baru gas
-connectDB.sequelize
-  .authenticate()
-  .then(() => {
-    console.log("\nConnected to the database succesfully");
-    app.listen(port, () => {
-      console.log(`App is running on port ${port}`);
-    });
-  })
-  .catch((err) =>
-    console.error("Connecting to database failed succesfully:\n", err.parent)
-  );
+const routes = require("./routes");
+app.use(routes);
+
+app.listen(port, () => {
+  console.log(`App is listening on ${port}`);
+});
