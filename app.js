@@ -8,6 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
 const routes = require("./routes");
+const connectDB = require("./models");
 app.use(routes);
 
 //cek koneksi ke db dulu baru gas
