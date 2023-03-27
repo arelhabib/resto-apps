@@ -4,8 +4,12 @@ class FoodController {
   static async getFoods(req, res) {
     try {
       let foods = await food.findAll();
-      res.render("foods/index.ejs", { foods });
-      // res.json(foods);
+
+      if (req.headers.accept.search("html") >= 0) {
+        return res.render("foods/index.ejs", { foods });
+      }
+
+      res.json(foods);
     } catch (err) {
       res.json(err);
     }
@@ -24,8 +28,12 @@ class FoodController {
         price,
         retaurantId,
       });
+
+      if (req.headers.accept.search("html") >= 0) {
+        return res.redirect("/foods");
+      }
+
       res.json(resultFood);
-      //   res.redirect("/companies");
     } catch (err) {
       res.json(err);
     }
@@ -39,6 +47,10 @@ class FoodController {
         where: { id },
       });
 
+      if (req.headers.accept.search("html") >= 0) {
+        return res.redirect("/foods");
+      }
+
       resultFood === 1
         ? res.json({
             message: `Food id ${id} has been deleted!`,
@@ -51,7 +63,24 @@ class FoodController {
     }
   }
 
-  static editPage(req, res) {}
+  static async editDetail(req, res) {
+    try {
+      const id = +req.params.id;
+      let foods = await food.findByPk(id);
+
+      if (req.headers.accept.search("html") >= 0) {
+        return res.render("food/editPage.ejs", { foods });
+      }
+
+      foods !== null
+        ? res.json(foods.dataValues)
+        : res.json({
+            message: `Food id ${id} not found!`,
+          });
+    } catch (err) {
+      res.json(err);
+    }
+  }
 
   static async edit(req, res) {
     try {
@@ -69,6 +98,10 @@ class FoodController {
           where: { id },
         }
       );
+
+      if (req.headers.accept.search("html") >= 0) {
+        return res.redirect("/foods");
+      }
 
       resultFood[0] === 1
         ? res.json({

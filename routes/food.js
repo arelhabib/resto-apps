@@ -6,7 +6,7 @@ foodRoute.get("/", FoodController.getFoods);
 foodRoute.get("/create", FoodController.createPage);
 foodRoute.post("/create", FoodController.create);
 foodRoute.get("/delete/:foodId", FoodController.delete);
-foodRoute.get("/edit/:id", FoodController.editPage);
+foodRoute.get("/edit/:id", FoodController.editDetail);
 foodRoute.post("/edit/:id", FoodController.edit);
 // foodRoute.get("/info/:id", FoodController.info);
 

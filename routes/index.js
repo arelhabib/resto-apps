@@ -6,7 +6,12 @@ route.get("/", (req, res) => {
 });
 
 const foodRoutes = require("./food");
+const ingredientRoutes = require("./ingredient");
+// const restaurantRoutes = require("./restaurant");
+const FoodIngreRoutes = require("./foodIngredient");
 
 route.use("/foods", foodRoutes);
+route.use("/ingredients", ingredientRoutes);
+route.use("/foods-ingredients", FoodIngreRoutes);
 
 module.exports = route;

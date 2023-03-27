@@ -9,9 +9,10 @@
   "test": {
     "username": "postgres",
     "password": "admin",
-    "database": "resto_kita_test",
+    "database": "resto_kita_dev",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "logging": false
   },
   "production": {
     "username": "postgres",
