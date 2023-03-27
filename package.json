@@ -4,8 +4,15 @@
   "description": "miniproject code.id academy",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "nodemon app.js",
+    "dbcreate":"sequelize db:create & sequelize db:migrate",
+    "dbdrop":"sequelize db:drop",
+    "dbgen":"sequelize init & npm run model_resto & npm run model_food & npm run model_ingredient & npm run model_food-ingredient",
+    "model_resto":"sequelize model:generate --name restaurant --attributes name:string",
+    "model_food":"sequelize model:generate --name food --attributes name:string,price:integer,restaurantId:integer",
+    "model_ingredient":"sequelize model:generate --name ingredient --attributes name:string",
+    "model_food-ingredient":"sequelize model:generate --name FIjunction --attributes foodId:integer,ingredientId:integer"
   },
   "repository": {
     "type": "git",
