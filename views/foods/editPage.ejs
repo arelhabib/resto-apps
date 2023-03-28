@@ -17,7 +17,16 @@
         </div>
         <div class="mb-3">
           <label for="">Cabang Restaurant</label>
-          <input type="text" class="form-control" placeholder="Input Name" value="<%= foods.restaurantId %>" name="restaurantId" required />
+          <select class="form-select" name="restaurantId" required>
+            <option disabled selected hidden value="">Pilih opsi</option>
+              <% resto.forEach(item => { %>
+                <% if (foods.restaurantId === item.id) { %>
+                    <option selected value="<%= item.id %>"><%= item.name %></option>
+                  <% } else { %>
+                    <option value="<%= item.id %>"><%= item.name %></option>
+                <% } %>
+              <% }) %>
+          </select>
         </div>
         <div class="mb-3">
           <button class="btn btn-primary" type="submit">Update</button>

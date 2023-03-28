@@ -3,13 +3,13 @@ const { food, restaurant, FIjunction } = require("../models");
 class FoodController {
   static async getFoods(req, res) {
     try {
-      let resto = await restaurant.findAll();
       let foods = await food.findAll({
         include: [restaurant],
         order: [["id", "asc"]],
       });
 
       if (req.headers.accept.search("html") >= 0) {
+        let resto = await restaurant.findAll();
         return res.render("foods/index.ejs", { foods, resto });
       }
       // res.render("foods/index.ejs", { foods });
@@ -74,7 +74,8 @@ class FoodController {
       let foods = await food.findByPk(id);
 
       if (req.headers.accept.search("html") >= 0) {
-        return res.render("foods/editPage.ejs", { foods });
+        let resto = await restaurant.findAll();
+        return res.render("foods/editPage.ejs", { foods, resto });
       }
 
       foods !== null
