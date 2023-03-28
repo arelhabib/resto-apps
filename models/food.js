@@ -9,7 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      food.belongsTo(models.restaurant, { foreignKey: "restaurantId" });
+      food.belongsTo(models.restaurant, {
+        foreignKey: "restaurantId",
+        onDelete: "SET NULL",
+      });
       food.belongsToMany(models.ingredient, { through: models.FIjunction });
     }
   }

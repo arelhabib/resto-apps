@@ -10,19 +10,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
+            <a class="nav-link" href="/">Home</a>
+          </li>
         <li class="nav-item">
-          <a class="nav-link me-2" aria-current="page" href="/restaurants">Restaurant</a>
+          <a class="nav-link" href="/restaurants">Restaurants</a>
         </li>
         <li class="nav-item">
           <a class="nav-link">Recipes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active fw-bold border-bottom border-2 border-dark" href="/foods"><i class="fa-solid fa-utensils me-2"></i>Foods</a>
+          <a class="nav-link" href="/foods">Foods</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/ingredients">Ingredient</a>
+          <a class="nav-link active fw-bold border-bottom border-2 border-dark" aria-current="page" href="/ingredients"><i class="fa-solid fa-wheat-awn me-1"></i> Ingredient</a>
         </li>
       </ul>
 
@@ -46,7 +46,7 @@
   <div class="row border border-light-subtle p-5 rounded-3">
     <div class="col">
       <div class="row">
-        <div class="col-6"><h3 class="fw-bold">Foods Page</h3></div>
+        <div class="col-6"><h3 class="fw-bold">Ingredients Page</h3></div>
         <div class="col-6 text-end">
           <button type="button" class="btn btn-primary fw-bold opacity-75" data-bs-toggle="modal" data-bs-target="#addNew" data-bs-whatever="@mdo">Add New +</button>
         </div>
@@ -55,36 +55,18 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
-              <th scope="col">Served in Restaurant</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            <% foods.forEach((food, id) => { %>
+            <% ingredients.forEach((ingredient, id) => { %>
             <tr>
               <th scope="row"><%= 1+id %></th>
+              <td><%= ingredient.name %></td>
               <td>
-                <div class="row">
-                  <div class="col-2">
-                    <img class="img-fluid rounded-circle" src="<%= food.image %>" alt="" width="70px" />
-                  </div>
-                  <div class="col-10">
-                    <h5>
-                      <a href="#"> <%= food.name %> </a>
-                    </h5>
-                    <small class="badge bg-info">Rp. <%= food.price%></small>
-                  </div>
-                </div>
-              </td>
-              <% if (food.restaurant !== null) { %>
-                <td><%= food.restaurant.name %></td>
-              <% } else { %>
-                 <td></td>
-              <% } %>
-              <td>
-                <a class="btn btn-sm btn-danger opacity-80" href="/foods/delete/<%= food.id %>"> <i class="fa-solid fa-trash-can"></i> </a>
+                <a class="btn btn-sm btn-danger opacity-80" href="/ingredients/delete/<%= ingredient.id %>"> <i class="fa-solid fa-trash-can"></i> </a>
 
-                <a class="btn btn-sm btn-warning opacity-80" href="/foods/edit/<%= food.id %>"> <i class="fa-sharp fa-solid fa-pen-to-square"></i> </a>
+                <a class="btn btn-sm btn-warning opacity-80" href="/ingredients/edit/<%= ingredient.id %>"> <i class="fa-sharp fa-solid fa-pen-to-square"></i> </a>
               </td>
             </tr>
             <% }) %>
@@ -99,35 +81,15 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Food</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Ingredient</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="post" action="/foods/create">
+          <form method="post" action="/ingredients/create">
             <div class="mb-3">
               <label for="">Name</label>
               <input type="text" class="form-control" placeholder="Input Name" name="name" required />
             </div>
-            <div class="mb-3">
-              <label for="">Image url</label>
-              <input type="text" class="form-control" placeholder="example: https://via.placeholder.com/150" name="image" />
-            </div>
-            <div class="mb-3">
-              <label for="">Price</label>
-              <input type="number" class="form-control" placeholder="Price only number" name="price" required />
-            </div>
-            <div class="mb-3">
-              <label for="">Cabang Restaurant</label>
-              <!-- <input type="text" class="form-control" placeholder="restaurant id" name="restaurantId" required /> -->
-            </div>
-            <select class="form-select" name="restaurantId" required>
-              <option disabled selected hidden>Pilih opsi</option>
-              <% if (resto.length > 0) { %>
-                <% resto.forEach(item => { %>
-                  <option value="<%= item.id %>"><%= item.name %></option>
-                <% }) %>
-              <% } %>
-            </select>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -5,6 +5,10 @@ route.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
+route.get("/docs", (req, res) => {
+  res.redirect("https://documenter.getpostman.com/view/26597771/2s93RQUutp");
+});
+
 const foodRoutes = require("./food");
 const ingredientRoutes = require("./ingredient");
 const restaurantRoutes = require("./restaurant");

@@ -1,4 +1,4 @@
-const { ingredient } = require("../models");
+const { ingredient, FIjunction } = require("../models");
 
 class IngredientController {
   static async getIngredients(req, res) {
@@ -38,6 +38,7 @@ class IngredientController {
     try {
       const id = +req.params.ingredientId;
 
+      //await FIjunction.destroy({ where: { ingredientId: id } });
       let resultIngredient = await ingredient.destroy({
         where: { id },
       });
@@ -63,7 +64,7 @@ class IngredientController {
     let ingredients = await ingredient.findByPk(id);
 
     if (req.headers.accept.search("html") >= 0) {
-      return res.render("ingredient/editPage.ejs", { ingredients });
+      return res.render("ingredients/editPage.ejs", { ingredients });
     }
 
     ingredients !== null

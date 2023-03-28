@@ -8,7 +8,12 @@ Untuk menjalankan aplikasi lakukan perintah berikut
 2. `cp .env.example .env` : dan isi sesuai dengan environment dan rubah `/config/config.json` sesuai dengan konfigurasi dbms yang digunakan
 3. `npm run dbcreate` : untuk inisialisasi database dan migrating
 
+
 ## Untuk menjalankan aplikasi
 1. `npm start` untuk menjalankan program
 
 Note: untuk melihat command yang lain bisa dengan menjalankan `npm run`
+
+
+## API Documentation
+https://documenter.getpostman.com/view/26597771/2s93RQUutp

@@ -23,6 +23,8 @@ module.exports = {
           model: "restaurants",
           key: "id",
         },
+        onDelete: "set null",
+        onUpdate: "cascade",
         type: Sequelize.INTEGER,
       },
       createdAt: {

@@ -14,6 +14,8 @@ module.exports = {
           model: "food",
           key: "id",
         },
+        onDelete: "cascade",
+        onUpdate: "cascade",
         type: Sequelize.INTEGER,
       },
       ingredientId: {
@@ -21,6 +23,8 @@ module.exports = {
           model: "ingredients",
           key: "id",
         },
+        onDelete: "cascade",
+        onUpdate: "cascade",
         type: Sequelize.INTEGER,
       },
       // createdAt: {

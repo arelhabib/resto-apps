@@ -1,15 +1,16 @@
-const { food, restaurant } = require("../models");
+const { food, restaurant, FIjunction } = require("../models");
 
 class FoodController {
   static async getFoods(req, res) {
     try {
+      let resto = await restaurant.findAll();
       let foods = await food.findAll({
         include: [restaurant],
         order: [["id", "asc"]],
       });
 
       if (req.headers.accept.search("html") >= 0) {
-        return res.render("foods/index.ejs", { foods });
+        return res.render("foods/index.ejs", { foods, resto });
       }
       // res.render("foods/index.ejs", { foods });
 
@@ -46,6 +47,7 @@ class FoodController {
     try {
       const id = +req.params.foodId;
 
+      //await FIjunction.destroy({ where: { foodId: id } });
       let resultFood = await food.destroy({
         where: { id },
       });

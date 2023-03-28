@@ -1,15 +1,16 @@
-const { restaurant } = require("../models");
+const { restaurant, food } = require("../models");
 
 class RestaurantController {
   static async getRestaurants(req, res) {
     try {
       let restaurants = await restaurant.findAll({
         order: [["id", "asc"]],
+        include: [food],
       });
       if (req.headers.accept.search("html") >= 0) {
         return res.render("restaurants/index.ejs", { restaurants });
       }
-      res.json(foods);
+      res.json(restaurants);
     } catch (err) {
       res.status(err);
     }
