@@ -1,13 +1,17 @@
-const { food } = require("../models");
+const { food, restaurant } = require("../models");
 
 class FoodController {
   static async getFoods(req, res) {
     try {
-      let foods = await food.findAll();
+      let foods = await food.findAll({
+        include: [restaurant],
+        order: [["id", "asc"]],
+      });
 
       if (req.headers.accept.search("html") >= 0) {
         return res.render("foods/index.ejs", { foods });
       }
+      // res.render("foods/index.ejs", { foods });
 
       res.json(foods);
     } catch (err) {
@@ -16,24 +20,23 @@ class FoodController {
   }
 
   static async createPage(req, res) {
-    res.render("food/createPage.ejs");
+    res.render("foods/createPage.ejs");
   }
 
   static async create(req, res) {
     try {
-      const { name, image, price, retaurantId } = req.body;
-      let resultFood = await food.create({
+      const { name, image, price, restaurantId } = req.body;
+
+      let result = await food.create({
         name,
         image,
         price,
-        retaurantId,
+        restaurantId,
       });
-
       if (req.headers.accept.search("html") >= 0) {
         return res.redirect("/foods");
       }
-
-      res.json(resultFood);
+      res.json(result);
     } catch (err) {
       res.json(err);
     }
@@ -63,13 +66,13 @@ class FoodController {
     }
   }
 
-  static async editDetail(req, res) {
+  static async editPage(req, res) {
     try {
       const id = +req.params.id;
       let foods = await food.findByPk(id);
 
       if (req.headers.accept.search("html") >= 0) {
-        return res.render("food/editPage.ejs", { foods });
+        return res.render("foods/editPage.ejs", { foods });
       }
 
       foods !== null
