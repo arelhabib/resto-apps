@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "nodemon app.js",
-    "dbcreate":"sequelize db:create & sequelize db:migrate",
+    "dbcreate":"sequelize db:create & npm run migrate:up",
     "dbcreate_seed":"npm run dbdrop && npm run dbcreate && npm run seed:up",
     "dbdrop":"sequelize db:drop",
     "migrate:up":"sequelize db:migrate",

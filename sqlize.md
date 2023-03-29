@@ -15,3 +15,10 @@ npx sequelize seed:generate --name ingredient
 npx sequelize seed:generate --name FIjunction
 
 ```
+
+## NPM run scripts
+- `npm start` : Run App
+- `npm test` : Run App with nodemon
+- `npm run dbcreate` : Create database
+- `npm run dbcreate_seed` : Create database with seeder
+- `npm run dbdrop` : Drop database
