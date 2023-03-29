@@ -27,14 +27,12 @@ module.exports = {
         onUpdate: "cascade",
         type: Sequelize.INTEGER,
       },
-      // createdAt: {
-      //   allowNull: false,
-      //   type: Sequelize.DATE,
-      // },
-      // updatedAt: {
-      //   allowNull: false,
-      //   type: Sequelize.DATE,
-      // },
+    });
+
+    await queryInterface.addConstraint("FIjunctions", {
+      type: "unique",
+      fields: ["foodId", "ingredientId"],
+      name: "FIjunctions_unique_constraint",
     });
   },
   async down(queryInterface, Sequelize) {
