@@ -1,4 +1,4 @@
-<%- include('../header') %>
+<%- include('../header.ejs') %>
 <div class="container my-5 py-5">
   <div class="row">
     <div class="col-6 mx-auto">
@@ -19,13 +19,11 @@
           <label for="">Cabang Restaurant</label>
           <select class="form-select" name="restaurantId" required>
             <option disabled selected hidden value="">Pilih opsi</option>
-              <% resto.forEach(item => { %>
-                <% if (foods.restaurantId === item.id) { %>
-                    <option selected value="<%= item.id %>"><%= item.name %></option>
-                  <% } else { %>
-                    <option value="<%= item.id %>"><%= item.name %></option>
-                <% } %>
-              <% }) %>
+            <% resto.forEach(item => { %> <% if (foods.restaurantId === item.id) { %>
+            <option selected value="<%= item.id %>"><%= item.name %></option>
+            <% } else { %>
+            <option value="<%= item.id %>"><%= item.name %></option>
+            <% } %> <% }) %>
           </select>
         </div>
         <div class="mb-3">
