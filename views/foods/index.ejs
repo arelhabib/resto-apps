@@ -50,7 +50,7 @@
         <div class="col-6 text-end">
           <button type="button" class="btn btn-primary fw-bold opacity-75" data-bs-toggle="modal" data-bs-target="#addNew" data-bs-whatever="@mdo">Add New +</button>
         </div>
-        <table class="table table-hover">
+        <table class="table table-striped table-resto">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -70,7 +70,7 @@
                   </div>
                   <div class="col-10">
                     <h5>
-                      <a href="#"> <%= food.name %> </a>
+                      <a href="/foods/<%= food.id %>/ingredients"> <%= food.name %> </a>
                     </h5>
                     <small class="badge bg-info">Rp. <%= food.price%></small>
                   </div>
@@ -93,6 +93,7 @@
       </div>
     </div>
   </div>
+
 
   <!-- AddNew Modal -->
   <div class="modal fade" id="addNew" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -135,6 +136,50 @@
       </div>
     </div>
   </div>
+<!-- end -->
+
+
+ <!-- AddNew Modal -->
+ <div class="modal fade" id="detail" tabindex="-2" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Detail New Food</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/foods/create">
+          <div class="mb-3">
+            <label for="">Name</label>
+            <input type="text" class="form-control" placeholder="Input Name" name="name" required />
+          </div>
+          <div class="mb-3">
+            <label for="">Image url</label>
+            <input type="text" class="form-control" placeholder="example: https://via.placeholder.com/150" name="image" />
+          </div>
+          <div class="mb-3">
+            <label for="">Price</label>
+            <input type="number" class="form-control" placeholder="Price only number" name="price" required />
+          </div>
+          <div class="mb-3">
+            <label for="">Cabang Restaurant</label>
+            
+          </div>
+          <select class="form-select" name="restaurantId" required>
+            <option disabled selected hidden value="">Pilih opsi</option>
+              <% resto.forEach(item => { %>
+                <option value="<%= item.id %>"><%= item.name %></option>
+              <% }) %>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-primary" type="submit">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <!-- end -->
 
 

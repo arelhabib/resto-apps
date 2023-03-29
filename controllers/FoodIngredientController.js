@@ -8,7 +8,7 @@ class FIController {
       });
 
       if (req.headers.accept.search("html") >= 0) {
-        res.render("FIjunction/index.ejs", { FIjunctions });
+        res.render("foods-ingredients/index.ejs", { FIjunctions });
       }
 
       res.json(FIjunctions);
@@ -108,10 +108,7 @@ class FIController {
       const id = Number(req.params.id);
       const { name } = req.body;
 
-      let resultFIjunction = await FIjunction.update(
-        { name },
-        { where: { id } }
-      );
+      let resultFIjunction = await FIjunction.update({ name }, { where: { id } });
 
       if (req.headers.accept.search("html") >= 0) {
         return res.redirect("/FIjunctions");

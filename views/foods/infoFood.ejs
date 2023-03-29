@@ -1,0 +1,62 @@
+<%- include('../header.ejs') %>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <a class="icons" href="/foods"><i class="fa-solid fa-arrow-left me-1"></i> Back</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="dropdown ms-auto">
+        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill fs-5"></i> <span class="opacity-50">Hi!, owner</span></button>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Profile</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- /Navbar -->
+
+<div class="container w-50 bg-body-tertiary rounded-5 py-3 my-5">
+  <div class="row text-center m-4">
+    <div class="col-md-4 bg-white shadow-sm p-3 mb-5 bg-body-light rounded">
+      <div class="w-100">
+        <img class="mb img-fluid rounded-circle border border-secondary-subtle border-3" src="<%= FI.image%>" alt="" />
+      </div>
+      <div class="w-100">
+        <h3><%= FI.name %></h3>
+        <small class="badge bg-primary">Rp. <%= FI.price %></small>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="row ms-3">
+        <ul class="nav nav-tabs mb-5">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Ingredients</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Description</a>
+          </li>
+        </ul>
+        <% FI.ingredients.forEach(ingredient => { %>
+        <div class="col-md-4">
+          <div>
+            <img class="img-fluid rounded-circle" src="https://via.placeholder.com/150" alt="" />
+          </div>
+          <div class="w-100">
+            <p class="fs-4"><%= ingredient.name%></p>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('../footer') %>
