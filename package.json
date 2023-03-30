@@ -7,7 +7,7 @@
     "start": "node app.js",
     "test": "nodemon app.js",
     "dbcreate":"sequelize db:create & npm run migrate:up",
-    "dbcreate_seed":"npm run dbdrop && npm run dbcreate && npm run seed:up",
+    "dbcreate_seed":"npm run dbdrop && npm run dbcreate && npm run seed:up && npm test",
     "dbdrop":"sequelize db:drop",
     "migrate:up":"sequelize db:migrate",
     "migrate:down":"sequelize db:migrate:undo",

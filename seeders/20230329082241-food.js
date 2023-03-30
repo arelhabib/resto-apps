@@ -34,6 +34,12 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: "Ayam goreng",
+          price: 15000,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       { individualHooks: true }
     );

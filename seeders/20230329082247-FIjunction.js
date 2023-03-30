@@ -12,6 +12,14 @@ module.exports = {
         foodId: 2,
         ingredientId: 2,
       },
+      {
+        foodId: 1,
+        ingredientId: 2,
+      },
+      {
+        foodId: 1,
+        ingredientId: 3,
+      },
     ]);
   },
 

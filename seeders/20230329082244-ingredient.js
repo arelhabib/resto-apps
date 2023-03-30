@@ -12,6 +12,12 @@ module.exports = {
       },
       {
         name: "Minyak",
+        price: 2000,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "Tepung",
         price: 4000,
         createdAt: new Date(),
         updatedAt: new Date(),
