@@ -15,7 +15,7 @@ class RestaurantController {
       res.status(err);
     }
   }
-  static createPage(req, res) {}
+  
   static async create(req, res) {
     try {
       const { name } = req.body;

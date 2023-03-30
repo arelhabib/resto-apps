@@ -38,20 +38,6 @@ class FIController {
     }
   }
 
-  static async addIngredient(req, res) {
-    try {
-      let id = +req.params.id;
-      let foods = await food.findByPk(id);
-      let ingredients = await ingredient.findAll();
-      res.render("foods-ingredients/addFoodIngredient.ejs", {
-        foods,
-        ingredients,
-      });
-    } catch (error) {
-      res.json(error);
-    }
-  }
-
   static async create(req, res) {
     try {
       const { foodId, ingredientId } = req.body;
@@ -152,34 +138,6 @@ class FIController {
     } catch (error) {
       res.json(error);
     }
-  }
-
-  // fungsi edit belum ada yg perlu digunakan
-  static async edit(req, res) {
-    // try {
-    //   const id = Number(req.params.id);
-    //   const { name } = req.body;
-
-    //   let resultFIjunction = await FIjunction.update(
-    //     { name },
-    //     { where: { id } }
-    //   );
-
-    //   if (req.headers.accept.search("html") >= 0) {
-    //     return res.redirect("/foods-ingredients");
-    //   }
-
-    //   resultFIjunction[0] === 1
-    //     ? res.json({
-    //         message: `FIjunction id ${id} has been updated!`,
-    //       })
-    //     : res.json({
-    //         message: `FIjunction ${id} not found`,
-    //       });
-    // } catch (err) {
-    //   res.json(err);
-    // }
-    res.redirect("/foods-ingredients");
   }
 }
 

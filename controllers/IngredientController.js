@@ -1,4 +1,4 @@
-const { ingredient, FIjunction } = require("../models");
+const { ingredient } = require("../models");
 
 class IngredientController {
   static async getIngredients(req, res) {
@@ -13,10 +13,6 @@ class IngredientController {
     } catch (err) {
       res.json(err);
     }
-  }
-
-  static createPage(req, res) {
-    res.render("ingredient/createPage.ejs");
   }
 
   static async create(req, res) {
@@ -38,7 +34,6 @@ class IngredientController {
     try {
       const id = +req.params.ingredientId;
 
-      //await FIjunction.destroy({ where: { ingredientId: id } });
       let resultIngredient = await ingredient.destroy({
         where: { id },
       });
@@ -77,9 +72,9 @@ class IngredientController {
   static async edit(req, res) {
     try {
       const id = Number(req.params.id);
-      const { name } = req.body;
+      const { name, price } = req.body;
 
-      let resultIngredient = await ingredient.update({ name }, { where: { id } });
+      let resultIngredient = await ingredient.update({ name, price }, { where: { id } });
 
       if (req.headers.accept.search("html") >= 0) {
         return res.redirect("/ingredients");

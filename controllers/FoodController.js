@@ -19,10 +19,6 @@ class FoodController {
     }
   }
 
-  static async createPage(req, res) {
-    res.render("foods/createPage.ejs");
-  }
-
   static async create(req, res) {
     try {
       const { name, image, price, restaurantId } = req.body;
