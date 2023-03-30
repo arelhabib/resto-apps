@@ -33,14 +33,14 @@
       <div class="w-100">
         <h3><%= FI.name %></h3>
         <div>
-          <small class="badge bg-primary mb-2"
-            >Harga Makanan:<br />
-            Rp. <%= FI.price %></small
-          >
-          <small class="badge bg-primary"
-            >Total Harga Bahan:<br />
-            Rp. <%= FI.ingredientsTotal %></small
-          >
+          <% if (FI.ingredientsTotal <= FI.price) { %>
+            <small class="badge bg-primary mb-2">
+          <% } else { %>
+            <small class="badge bg-danger mb-2">
+          <% } %>
+              Harga Makanan:<br> Rp. <%= FI.price %>
+          </small>
+          <small class="badge bg-primary">Total Harga Bahan:<br> Rp. <%= FI.ingredientsTotal %></small>
         </div>
       </div>
     </div>

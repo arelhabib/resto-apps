@@ -22,14 +22,23 @@ class FIController {
     }
   }
 
-  static createPage(req, res) {
-    res.render("foods-ingredients/createPage.ejs");
+  static async addIngredient(req, res) {
+    try {
+      let id = +req.params.id;
+      let foods = await food.findByPk(id);
+      let ingredients = await ingredient.findAll();
+      res.render("foods-ingredients/addFoodIngredient.ejs", {
+        foods,
+        ingredients,
+      });
+    } catch (error) {
+      res.json(error);
+    }
   }
 
   static async create(req, res) {
     try {
       const { foodId, ingredientId } = req.body;
-
       let result = await FIjunction.create({
         foodId,
         ingredientId,
@@ -40,6 +49,9 @@ class FIController {
 
       res.json(result);
     } catch (err) {
+      if (req.headers.accept.search("html") >= 0) {
+        return res.redirect(`/foods-ingredients`);
+      }
       res.json(err);
     }
   }
@@ -113,7 +125,10 @@ class FIController {
       const id = Number(req.params.id);
       const { name } = req.body;
 
-      let resultFIjunction = await FIjunction.update({ name }, { where: { id } });
+      let resultFIjunction = await FIjunction.update(
+        { name },
+        { where: { id } }
+      );
 
       if (req.headers.accept.search("html") >= 0) {
         return res.redirect("/FIjunctions");
