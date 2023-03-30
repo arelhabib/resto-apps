@@ -46,7 +46,7 @@ class FIController {
       if (req.headers.accept.search("html") >= 0) {
         return res.redirect("/foods-ingredients");
       }
-
+      // console.log(result);
       res.json(result);
     } catch (err) {
       if (req.headers.accept.search("html") >= 0) {

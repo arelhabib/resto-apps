@@ -100,7 +100,7 @@
               </select>
             </div>
            <div>
-            <select class="form-select" name="ingredientId" required>
+            <select class="form-select" name="ingredientId" id="ingredient" required>
               <option disabled selected hidden value="">Ingredient</option>
                 <% ing.forEach(item => { %>
                   <option value="<%= item.id %>"><%= item.name %></option>
