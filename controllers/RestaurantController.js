@@ -15,7 +15,7 @@ class RestaurantController {
       res.status(err);
     }
   }
-  
+
   static async create(req, res) {
     try {
       const { name } = req.body;
@@ -66,7 +66,7 @@ class RestaurantController {
       restaurants !== null
         ? res.json(restaurants.dataValues)
         : res.json({
-            message: `Food id ${id} not found!`,
+            message: `Restaurant id ${id} not found!`,
           });
     } catch (err) {
       res.json(err);

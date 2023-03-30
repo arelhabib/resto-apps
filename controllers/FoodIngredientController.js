@@ -87,12 +87,12 @@ class FIController {
         return res.redirect("/foods-ingredients");
       }
 
-      resultFIjunction === 1
+      resultFIjunction !== 0
         ? res.json({
-            message: `FIjunction id ${id} has been deleted!`,
+            message: `FIjunction Food id ${id} has been deleted!`,
           })
         : res.json({
-            message: `FIjunction id ${id} not found!`,
+            message: `FIjunction Food id ${id} not found!`,
           });
     } catch (err) {
       res.json(err);

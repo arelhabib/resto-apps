@@ -25,7 +25,60 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/restaurants",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"restaurants"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "118"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"76-Vk2F3XDlLVO39OL1Hl64Hit7JAw\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Mar 2023 13:18:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Resto Cool\",\n        \"createdAt\": \"2023-03-28T13:18:52.992Z\",\n        \"updatedAt\": \"2023-03-28T13:18:52.992Z\",\n        \"food\": []\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Create",
@@ -42,7 +95,7 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "ads"
+									"value": "Resto Cool"
 								}
 							]
 						},
@@ -57,7 +110,75 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Create success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Resto Cool"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/restaurants/create",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"restaurants",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "106"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6a-It301ySn5Mk7j69CxDWOI3FIpLE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Mar 2023 13:18:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Resto Cool\",\n    \"updatedAt\": \"2023-03-28T13:18:52.992Z\",\n    \"createdAt\": \"2023-03-28T13:18:52.992Z\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete",
@@ -76,7 +197,114 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Delete success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/restaurants/delete/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"restaurants",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-MhgU+60vahLANs68CNnre7F3xZw\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Mar 2023 13:20:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Restaurant Id 1 has been deleted\"\n}"
+						},
+						{
+							"name": "Delete not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/restaurants/delete/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"restaurants",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-62FyX+kGRndJ9tECls3rXA56FsE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Mar 2023 13:21:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Restaurant Id 1 not found!\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Update",
@@ -93,7 +321,7 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "ulel"
+									"value": "The Restaurant"
 								}
 							]
 						},
@@ -109,7 +337,143 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Update success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "The Restaurant"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/restaurants/edit/2",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"restaurants",
+										"edit",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-R5H++IoVCF1UGOzuvSB0FpA1TIA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Mar 2023 14:59:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Restaurant Id 2 has been updated!\"\n}"
+						},
+						{
+							"name": "Update not success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "The Restaurant",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/restaurants/edit/2",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"restaurants",
+										"edit",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-qwbsOMAlO5X4pOLZ/SNvdWD13A8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Mar 2023 14:59:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Restaurant Id 2 no changes!\"\n}"
+						}
+					]
 				},
 				{
 					"name": "GetID",
@@ -128,7 +492,114 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "GetID success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/restaurants/edit/2",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"restaurants",
+										"edit",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6e-kf0bwE6Fys6eSzx59sykpA8bo0k\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Mar 2023 15:00:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"The Restaurant\",\n    \"createdAt\": \"2023-03-30T13:34:03.189Z\",\n    \"updatedAt\": \"2023-03-30T14:59:14.491Z\"\n}"
+						},
+						{
+							"name": "GetID not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/restaurants/edit/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"restaurants",
+										"edit",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-MCK1n17i9eCrVsvn7q5fhYmptL8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Mar 2023 15:01:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Restaurant id 1 not found!\"\n}"
+						}
+					]
 				}
 			]
 		},
@@ -150,7 +621,59 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/foods",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"foods"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "303"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12f-2VdytICgy/Gjyj19eEbkHdA2RY8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Mar 2023 13:19:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"mie goreng\",\n        \"image\": \"https://via.placeholder.com/100x100\",\n        \"price\": 999,\n        \"restaurantId\": 1,\n        \"createdAt\": \"2023-03-28T13:19:39.326Z\",\n        \"updatedAt\": \"2023-03-28T13:19:39.326Z\",\n        \"restaurant\": {\n            \"id\": 1,\n            \"name\": \"Resto Cool\",\n            \"createdAt\": \"2023-03-28T13:18:52.992Z\",\n            \"updatedAt\": \"2023-03-28T13:18:52.992Z\"\n        }\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Create",
@@ -175,12 +698,11 @@
 								},
 								{
 									"key": "price",
-									"value": "999"
+									"value": "9999"
 								},
 								{
 									"key": "restaurantId",
-									"value": "1",
-									"disabled": true
+									"value": "1"
 								}
 							]
 						},
@@ -195,7 +717,86 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Create success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "mie goreng"
+										},
+										{
+											"key": "image",
+											"value": "tes"
+										},
+										{
+											"key": "price",
+											"value": "999"
+										},
+										{
+											"key": "restaurantId",
+											"value": "1"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/foods/create",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"foods",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "181"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b5-/zUhQXX9Sde7GIjen2LDMehJuqI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Mar 2023 13:19:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"mie goreng\",\n    \"image\": \"https://via.placeholder.com/100x100\",\n    \"price\": 999,\n    \"restaurantId\": 1,\n    \"updatedAt\": \"2023-03-28T13:19:39.326Z\",\n    \"createdAt\": \"2023-03-28T13:19:39.326Z\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete",
@@ -214,7 +815,114 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Delete success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/foods/delete/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"foods",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-y0Y1FJNC+GiFYGD2dexcqZXKpA4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Mar 2023 11:37:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Food id 1 has been deleted!\"\n}"
+						},
+						{
+							"name": "Delete not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/foods/delete/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"foods",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22-Q41QMKwfH4JIDMSo42tiieg8/30\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Mar 2023 13:25:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Food id 1 not found!\"\n}"
+						}
+					]
 				},
 				{
 					"name": "GetID",
@@ -222,18 +930,125 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{local}}/foods/edit/1",
+							"raw": "{{local}}/foods/edit/2",
 							"host": [
 								"{{local}}"
 							],
 							"path": [
 								"foods",
 								"edit",
-								"1"
+								"2"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "GetID success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/foods/edit/2",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"foods",
+										"edit",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "186"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ba-tP9hgV7DCGs8v/D0te+dYjyrVrA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Mar 2023 15:01:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"Mie goreng\",\n    \"image\": \"https://via.placeholder.com/100x100\",\n    \"price\": 10000,\n    \"restaurantId\": null,\n    \"createdAt\": \"2023-03-30T13:34:03.234Z\",\n    \"updatedAt\": \"2023-03-30T13:34:03.237Z\"\n}"
+						},
+						{
+							"name": "GetID not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/foods/edit/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"foods",
+										"edit",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22-Q41QMKwfH4JIDMSo42tiieg8/30\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Mar 2023 15:01:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Food id 1 not found!\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Update",
@@ -279,7 +1094,168 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Update success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "udang"
+										},
+										{
+											"key": "image",
+											"value": "tes"
+										},
+										{
+											"key": "price",
+											"value": "2000"
+										},
+										{
+											"key": "restaurantId",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/foods/edit/2",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"foods",
+										"edit",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-dRakDTMShVHpWAAbJPUEKFNI3RY\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Mar 2023 15:02:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Food id 2 has been updated!\"\n}"
+						},
+						{
+							"name": "Update not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "udang"
+										},
+										{
+											"key": "image",
+											"value": "tes"
+										},
+										{
+											"key": "price",
+											"value": "11"
+										},
+										{
+											"key": "restaurantId",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/foods/edit/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"foods",
+										"edit",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "30"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e-tG9g7ncIOeQYyMEtY7KP8gVKjEU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Mar 2023 15:03:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Food 1 not found\"\n}"
+						}
+					]
 				}
 			]
 		},
@@ -308,11 +1284,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/ingredients",
+									"raw": "{{local}}/ingredients",
 									"host": [
-										"localhost"
+										"{{local}}"
 									],
-									"port": "3000",
 									"path": [
 										"ingredients"
 									]
@@ -372,6 +1347,11 @@
 								{
 									"key": "name",
 									"value": "nasi"
+								},
+								{
+									"key": "price",
+									"value": "2000",
+									"type": "text"
 								}
 							]
 						},
@@ -403,15 +1383,19 @@
 										{
 											"key": "name",
 											"value": "nasi"
+										},
+										{
+											"key": "price",
+											"value": "2000",
+											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "localhost:3000/ingredients/create",
+									"raw": "{{local}}/ingredients/create",
 									"host": [
-										"localhost"
+										"{{local}}"
 									],
-									"port": "3000",
 									"path": [
 										"ingredients",
 										"create"
@@ -432,15 +1416,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "100"
+									"value": "113"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"64-NCSYUwQ17SLvMbRf9jHJiG7LdLw\""
+									"value": "W/\"71-+HUuKDPjQPtoDmdfRKIqfxCVu9I\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 28 Mar 2023 09:46:03 GMT"
+									"value": "Thu, 30 Mar 2023 15:13:09 GMT"
 								},
 								{
 									"key": "Connection",
@@ -452,7 +1436,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": 6,\n    \"name\": \"nasi\",\n    \"updatedAt\": \"2023-03-28T09:46:03.031Z\",\n    \"createdAt\": \"2023-03-28T09:46:03.031Z\"\n}"
+							"body": "{\n    \"id\": 4,\n    \"name\": \"nasi\",\n    \"price\": 2000,\n    \"updatedAt\": \"2023-03-30T15:13:09.555Z\",\n    \"createdAt\": \"2023-03-30T15:13:09.555Z\"\n}"
 						}
 					]
 				},
@@ -480,11 +1464,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/ingredients/delete/3",
+									"raw": "{{local}}/ingredients/delete/3",
 									"host": [
-										"localhost"
+										"{{local}}"
 									],
-									"port": "3000",
 									"path": [
 										"ingredients",
 										"delete",
@@ -599,18 +1582,23 @@
 								{
 									"key": "name",
 									"value": "bawang"
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{local}}/ingredients/edit/8",
+							"raw": "{{local}}/ingredients/edit/2",
 							"host": [
 								"{{local}}"
 							],
 							"path": [
 								"ingredients",
 								"edit",
-								"8"
+								"2"
 							]
 						},
 						"description": "Update ingredients by specify ID"
@@ -632,18 +1620,23 @@
 										{
 											"key": "name",
 											"value": "bawang"
+										},
+										{
+											"key": "price",
+											"value": "1000",
+											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "{{local}}/ingredients/edit/8",
+									"raw": "{{local}}/ingredients/edit/2",
 									"host": [
 										"{{local}}"
 									],
 									"path": [
 										"ingredients",
 										"edit",
-										"8"
+										"2"
 									]
 								}
 							},
@@ -665,11 +1658,11 @@
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"2f-a+LR57eYg0wdvfXWGA8cETOqOHg\""
+									"value": "W/\"2f-lmXQes7k1mxwWjlHgYUhhLSwrTk\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 28 Mar 2023 10:41:17 GMT"
+									"value": "Thu, 30 Mar 2023 15:13:44 GMT"
 								},
 								{
 									"key": "Connection",
@@ -681,7 +1674,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"Ingredient id 8 has been updated!\"\n}"
+							"body": "{\n    \"message\": \"Ingredient id 2 has been updated!\"\n}"
 						},
 						{
 							"name": "Update not found",
@@ -969,9 +1962,117 @@
 								"delete",
 								"1"
 							]
-						}
+						},
+						"description": "Delete by food ID"
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Delete success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/foods-ingredients/delete/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"foods-ingredients",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-Ea0B5qweu2boh7MjUTgCIhtbsrE\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Mar 2023 15:08:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"FIjunction Food id 1 has been deleted!\"\n}"
+						},
+						{
+							"name": "Delete not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/foods-ingredients/delete/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"foods-ingredients",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-2aqbcmGvhOY3A+c4j61bZ0JFd2M\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Mar 2023 15:08:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"FIjunction Food id 1 not found!\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Create",
@@ -988,11 +2089,11 @@
 							"urlencoded": [
 								{
 									"key": "foodId",
-									"value": "5"
+									"value": "2"
 								},
 								{
 									"key": "ingredientId",
-									"value": "5"
+									"value": "2"
 								}
 							]
 						},
@@ -1008,7 +2109,148 @@
 						},
 						"description": "Create food ingredients relation"
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Create Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "foodId",
+											"value": "2"
+										},
+										{
+											"key": "ingredientId",
+											"value": "2"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/foods-ingredients/create",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"foods-ingredients",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "29"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d-QbY5n1eWF2lHECJBRAHDdQAxWtY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Mar 2023 07:04:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"foodId\": 2,\n    \"ingredientId\": 2\n}"
+						},
+						{
+							"name": "Create Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "foodId",
+											"value": "2"
+										},
+										{
+											"key": "ingredientId",
+											"value": "1"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/foods-ingredients/create",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"foods-ingredients",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1513"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e9-wj81Nop4HPDam0/hxjjXgyVvMJo\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Mar 2023 07:03:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"SequelizeUniqueConstraintError\",\n    \"errors\": [\n        {\n            \"message\": \"foodId must be unique\",\n            \"type\": \"unique violation\",\n            \"path\": \"foodId\",\n            \"value\": \"2\",\n            \"origin\": \"DB\",\n            \"instance\": {\n                \"foodId\": 2,\n                \"ingredientId\": 1\n            },\n            \"validatorKey\": \"not_unique\",\n            \"validatorName\": null,\n            \"validatorArgs\": []\n        },\n        {\n            \"message\": \"ingredientId must be unique\",\n            \"type\": \"unique violation\",\n            \"path\": \"ingredientId\",\n            \"value\": \"1\",\n            \"origin\": \"DB\",\n            \"instance\": {\n                \"foodId\": 2,\n                \"ingredientId\": 1\n            },\n            \"validatorKey\": \"not_unique\",\n            \"validatorName\": null,\n            \"validatorArgs\": []\n        }\n    ],\n    \"parent\": {\n        \"length\": 249,\n        \"name\": \"error\",\n        \"severity\": \"ERROR\",\n        \"code\": \"23505\",\n        \"detail\": \"Key (\\\"foodId\\\", \\\"ingredientId\\\")=(2, 1) already exists.\",\n        \"schema\": \"public\",\n        \"table\": \"FIjunctions\",\n        \"constraint\": \"FIjunctions_unique_constraint\",\n        \"file\": \"nbtinsert.c\",\n        \"line\": \"563\",\n        \"routine\": \"_bt_check_unique\",\n        \"sql\": \"INSERT INTO \\\"FIjunctions\\\" (\\\"foodId\\\",\\\"ingredientId\\\") VALUES ($1,$2) RETURNING \\\"foodId\\\",\\\"ingredientId\\\";\",\n        \"parameters\": [\n            2,\n            1\n        ]\n    },\n    \"original\": {\n        \"length\": 249,\n        \"name\": \"error\",\n        \"severity\": \"ERROR\",\n        \"code\": \"23505\",\n        \"detail\": \"Key (\\\"foodId\\\", \\\"ingredientId\\\")=(2, 1) already exists.\",\n        \"schema\": \"public\",\n        \"table\": \"FIjunctions\",\n        \"constraint\": \"FIjunctions_unique_constraint\",\n        \"file\": \"nbtinsert.c\",\n        \"line\": \"563\",\n        \"routine\": \"_bt_check_unique\",\n        \"sql\": \"INSERT INTO \\\"FIjunctions\\\" (\\\"foodId\\\",\\\"ingredientId\\\") VALUES ($1,$2) RETURNING \\\"foodId\\\",\\\"ingredientId\\\";\",\n        \"parameters\": [\n            2,\n            1\n        ]\n    },\n    \"fields\": {\n        \"foodId\": \"2\",\n        \"ingredientId\": \"1\"\n    },\n    \"sql\": \"INSERT INTO \\\"FIjunctions\\\" (\\\"foodId\\\",\\\"ingredientId\\\") VALUES ($1,$2) RETURNING \\\"foodId\\\",\\\"ingredientId\\\";\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Get All Ingredients",
@@ -1016,13 +2258,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{local}}/foods-ingredients/5/ingredients",
+							"raw": "{{local}}/foods-ingredients/1/ingredients",
 							"host": [
 								"{{local}}"
 							],
 							"path": [
 								"foods-ingredients",
-								"5",
+								"1",
 								"ingredients"
 							]
 						},
