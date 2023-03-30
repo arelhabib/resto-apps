@@ -33,8 +33,14 @@
       <div class="w-100">
         <h3><%= FI.name %></h3>
         <div>
-          <small class="badge bg-primary mb-2">Harga Makanan:<br> Rp. <%= FI.price %></small>
-          <small class="badge bg-primary">Total Harga Bahan:<br> Rp. <%= FI.ingredientsTotal %></small>
+          <small class="badge bg-primary mb-2"
+            >Harga Makanan:<br />
+            Rp. <%= FI.price %></small
+          >
+          <small class="badge bg-primary"
+            >Total Harga Bahan:<br />
+            Rp. <%= FI.ingredientsTotal %></small
+          >
         </div>
       </div>
     </div>
@@ -48,19 +54,17 @@
             <a class="nav-link" href="#">Description</a>
           </li>
         </ul>
-        <% if (FI.ingredients.length) { %>
-          <% FI.ingredients.forEach(ingredient => { %>
-          <div class="col-md-4">
-            <div>
-              <img class="img-fluid rounded-circle" src="<%= FI.image %>" alt="" />
-            </div>
-            <div class="w-100">
-              <p class="fs-4"><%= ingredient.name%></p>
-            </div>
+        <% if (FI.ingredients.length) { %> <% FI.ingredients.forEach(ingredient => { %>
+        <div class="col-md-4">
+          <div>
+            <img class="img-fluid rounded-circle" src="<%= FI.image %>" alt="" />
           </div>
-          <% }) %>
-        <% } else { %>
-         <h3>No ingredient listed in this foods</h3>
+          <div class="w-100">
+            <p class="fs-4"><%= ingredient.name%></p>
+          </div>
+        </div>
+        <% }) %> <% } else { %>
+        <h3>No ingredient listed in this foods</h3>
         <% } %>
       </div>
     </div>

@@ -21,8 +21,8 @@ class IngredientController {
 
   static async create(req, res) {
     try {
-      const { name } = req.body;
-      let resultIngredient = await ingredient.create({ name });
+      const { name, price } = req.body;
+      let resultIngredient = await ingredient.create({ name, price });
 
       if (req.headers.accept.search("html") >= 0) {
         return res.redirect("/ingredients");
@@ -79,10 +79,7 @@ class IngredientController {
       const id = Number(req.params.id);
       const { name } = req.body;
 
-      let resultIngredient = await ingredient.update(
-        { name },
-        { where: { id } }
-      );
+      let resultIngredient = await ingredient.update({ name }, { where: { id } });
 
       if (req.headers.accept.search("html") >= 0) {
         return res.redirect("/ingredients");

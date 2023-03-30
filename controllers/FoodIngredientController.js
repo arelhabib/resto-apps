@@ -7,33 +7,38 @@ class FIController {
         include: [food, ingredient],
       });
 
+      // if (req.headers.accept.search("html") >= 0) {
+      //   res.render("foods-ingredients/index.ejs", { FIjunctions });
+      // }
       if (req.headers.accept.search("html") >= 0) {
-        res.render("foods-ingredients/index.ejs", { FIjunctions });
+        let ing = await ingredient.findAll();
+        let fd = await food.findAll();
+        return res.render("foods-ingredients/index.ejs", { FIjunctions, fd, ing });
       }
 
-      res.json(FIjunctions);
+      // res.json(FIjunctions);
     } catch (err) {
       res.json(err);
     }
   }
 
   static createPage(req, res) {
-    res.render("FIjunction/createPage.ejs");
+    res.render("foods-ingredients/createPage.ejs");
   }
 
   static async create(req, res) {
     try {
       const { foodId, ingredientId } = req.body;
-      let resultFIjunction = await FIjunction.create({
-        foodId: +foodId,
-        ingredientId: +ingredientId,
-      });
 
+      let result = await FIjunction.create({
+        foodId,
+        ingredientId,
+      });
       if (req.headers.accept.search("html") >= 0) {
-        return res.redirect("/FIjunctions");
+        return res.redirect("/foods-ingredients");
       }
 
-      res.json(resultFIjunction);
+      res.json(result);
     } catch (err) {
       res.json(err);
     }
