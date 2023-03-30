@@ -1,4 +1,4 @@
-const { food, restaurant, FIjunction, ingredient } = require("../models");
+const { food, restaurant } = require("../models");
 
 class FoodController {
   static async getFoods(req, res) {
@@ -12,7 +12,6 @@ class FoodController {
         let resto = await restaurant.findAll();
         return res.render("foods/index.ejs", { foods, resto });
       }
-      // res.render("foods/index.ejs", { foods });
 
       res.json(foods);
     } catch (err) {
@@ -47,7 +46,6 @@ class FoodController {
     try {
       const id = +req.params.foodId;
 
-      //await FIjunction.destroy({ where: { foodId: id } });
       let resultFood = await food.destroy({
         where: { id },
       });
@@ -116,46 +114,6 @@ class FoodController {
         : res.json({
             message: `Food ${id} not found`,
           });
-    } catch (err) {
-      res.json(err);
-    }
-  }
-  static async getFoodIngredients(req, res) {
-    try {
-      const id = Number(req.params.id);
-
-      let result = await FIjunction.findAll({
-        where: {
-          foodId: id,
-        },
-        include: [food, ingredient],
-      });
-
-      let resultFI = {};
-      let ingredients = [];
-      let ingredientsTotal = 0;
-
-      if (result.length === 0) {
-        result = await food.findByPk(id);
-        resultFI = {
-          ...result.dataValues,
-          ingredientsTotal,
-          ingredients,
-        };
-      } else {
-        ingredients = result.map((el) => {
-          ingredientsTotal += el.ingredient.dataValues.price;
-          return el.ingredient.dataValues;
-        });
-        resultFI = {
-          ...result[0].food.dataValues,
-          ingredientsTotal,
-          ingredients,
-        };
-      }
-
-      // res.json(resultFI);
-      res.render("foods/infoFood.ejs", { FI: resultFI });
     } catch (err) {
       res.json(err);
     }

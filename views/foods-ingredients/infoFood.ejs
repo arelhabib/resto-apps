@@ -36,7 +36,7 @@
           <% if (FI.ingredientsTotal <= FI.price) { %>
             <small class="badge bg-primary mb-2">
           <% } else { %>
-            <small class="badge bg-danger mb-2">
+            <small class="badge bg-danger mb-2" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Foods price lower than total ingredient price">
           <% } %>
               Harga Makanan:<br> Rp. <%= FI.price %>
           </small>

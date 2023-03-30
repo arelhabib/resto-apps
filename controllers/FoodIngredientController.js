@@ -7,16 +7,32 @@ class FIController {
         include: [food, ingredient],
       });
 
-      // if (req.headers.accept.search("html") >= 0) {
-      //   res.render("foods-ingredients/index.ejs", { FIjunctions });
-      // }
       if (req.headers.accept.search("html") >= 0) {
         let ing = await ingredient.findAll();
         let fd = await food.findAll();
-        return res.render("foods-ingredients/index.ejs", { FIjunctions, fd, ing });
+
+        let FI = await FIjunctions.reduce((fd, item) => {
+          if (!fd[item.food.id]) {
+            fd[item.food.id] = {
+              id: item.food.id,
+              food: item.food.name,
+              ingredients: [],
+            };
+          }
+
+          fd[item.food.id].ingredients.push(item.ingredient.name);
+          return fd;
+        }, []).filter((item) => item !== null);
+        // console.log(FI);
+
+        return res.render("foods-ingredients/index.ejs", {
+          FI,
+          fd,
+          ing,
+        });
       }
 
-      // res.json(FIjunctions);
+      res.json(FIjunctions);
     } catch (err) {
       res.json(err);
     }
@@ -39,14 +55,31 @@ class FIController {
   static async create(req, res) {
     try {
       const { foodId, ingredientId } = req.body;
-      let result = await FIjunction.create({
-        foodId,
-        ingredientId,
-      });
+      // console.log(req.body);
+
+      let result;
+      if (ingredientId.length) {
+        let input = [];
+        ingredientId.forEach((ing) => {
+          input.push({
+            foodId: +foodId,
+            ingredientId: +ing,
+          });
+        });
+
+        result = await FIjunction.bulkCreate(input, {
+          ignoreDuplicates: true,
+        });
+      } else {
+        result = await FIjunction.create({
+          foodId,
+          ingredientId,
+        });
+      }
       if (req.headers.accept.search("html") >= 0) {
         return res.redirect("/foods-ingredients");
       }
-      // console.log(result);
+
       res.json(result);
     } catch (err) {
       if (req.headers.accept.search("html") >= 0) {
@@ -61,11 +94,11 @@ class FIController {
       const id = +req.params.FIjunctionId;
 
       let resultFIjunction = await FIjunction.destroy({
-        where: { id },
+        where: { foodId: id },
       });
 
       if (req.headers.accept.search("html") >= 0) {
-        return res.redirect("/FIjunctions");
+        return res.redirect("/foods-ingredients");
       }
 
       resultFIjunction === 1
@@ -87,63 +120,66 @@ class FIController {
         where: { foodId: id },
         include: [food, ingredient],
       });
-      //pake s sama engga beda hasilnya
-      let ingredients = result.map((item) => {
-        return item.ingredient.dataValues;
-      });
 
-      if (req.headers.accept.search("html") >= 0) {
-        //boleh diganti method sesuai kebutuhan
-        return res.redirect("/");
+      let resultFI = {};
+      let ingredients = [];
+      let ingredientsTotal = 0;
+
+      if (result.length === 0) {
+        result = await food.findByPk(id);
+        resultFI = {
+          ...result.dataValues,
+          ingredientsTotal,
+          ingredients,
+        };
+      } else {
+        ingredients = result.map((el) => {
+          ingredientsTotal += el.ingredient.dataValues.price;
+          return el.ingredient.dataValues;
+        });
+        resultFI = {
+          ...result[0].food.dataValues,
+          ingredientsTotal,
+          ingredients,
+        };
       }
 
-      res.json({ ...result[0].food.dataValues, ingredients });
+      if (req.headers.accept.search("html") >= 0) {
+        return res.render("foods-ingredients/infoFood.ejs", { FI: resultFI });
+      }
+
+      res.json(resultFI);
     } catch (error) {
       res.json(error);
     }
   }
 
   // fungsi edit belum ada yg perlu digunakan
-
-  static async info(req, res) {
-    const id = +req.params.id;
-    let FIjunctions = await FIjunction.findByPk(id);
-
-    // if (req.headers.accept.search("html") >= 0) {
-    //   res.render("FIjunction/editPage.ejs", { FIjunctions });
-    // }
-
-    FIjunctions !== null
-      ? res.json(FIjunctions.dataValues)
-      : res.json({
-          message: `FIjunction id ${id} not found!`,
-        });
-  }
-
   static async edit(req, res) {
-    try {
-      const id = Number(req.params.id);
-      const { name } = req.body;
+    // try {
+    //   const id = Number(req.params.id);
+    //   const { name } = req.body;
 
-      let resultFIjunction = await FIjunction.update(
-        { name },
-        { where: { id } }
-      );
+    //   let resultFIjunction = await FIjunction.update(
+    //     { name },
+    //     { where: { id } }
+    //   );
 
-      if (req.headers.accept.search("html") >= 0) {
-        return res.redirect("/FIjunctions");
-      }
+    //   if (req.headers.accept.search("html") >= 0) {
+    //     return res.redirect("/foods-ingredients");
+    //   }
 
-      resultFIjunction[0] === 1
-        ? res.json({
-            message: `FIjunction id ${id} has been updated!`,
-          })
-        : res.json({
-            message: `FIjunction ${id} not found`,
-          });
-    } catch (err) {
-      res.json(err);
-    }
+    //   resultFIjunction[0] === 1
+    //     ? res.json({
+    //         message: `FIjunction id ${id} has been updated!`,
+    //       })
+    //     : res.json({
+    //         message: `FIjunction ${id} not found`,
+    //       });
+    // } catch (err) {
+    //   res.json(err);
+    // }
+    res.redirect("/foods-ingredients");
   }
 }
 
