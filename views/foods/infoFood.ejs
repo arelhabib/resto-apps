@@ -3,7 +3,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container">
-    <a class="icons" href="/foods"><i class="fa-solid fa-arrow-left me-1"></i> Back</a>
+    <a class="btn btn-md" href="/foods"><i class="fa-solid fa-arrow-left me-1"></i> Back</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,7 +32,10 @@
       </div>
       <div class="w-100">
         <h3><%= FI.name %></h3>
-        <small class="badge bg-primary">Rp. <%= FI.price %></small>
+        <div>
+          <small class="badge bg-primary mb-2">Harga Makanan:<br> Rp. <%= FI.price %></small>
+          <small class="badge bg-primary">Total Harga Bahan:<br> Rp. <%= FI.ingredientsTotal %></small>
+        </div>
       </div>
     </div>
     <div class="col-md-8">
@@ -45,16 +48,20 @@
             <a class="nav-link" href="#">Description</a>
           </li>
         </ul>
-        <% FI.ingredients.forEach(ingredient => { %>
-        <div class="col-md-4">
-          <div>
-            <img class="img-fluid rounded-circle" src="https://via.placeholder.com/150" alt="" />
+        <% if (FI.ingredients.length) { %>
+          <% FI.ingredients.forEach(ingredient => { %>
+          <div class="col-md-4">
+            <div>
+              <img class="img-fluid rounded-circle" src="<%= FI.image %>" alt="" />
+            </div>
+            <div class="w-100">
+              <p class="fs-4"><%= ingredient.name%></p>
+            </div>
           </div>
-          <div class="w-100">
-            <p class="fs-4"><%= ingredient.name%></p>
-          </div>
-        </div>
-        <% }) %>
+          <% }) %>
+        <% } else { %>
+         <h3>No ingredient listed in this foods</h3>
+        <% } %>
       </div>
     </div>
   </div>

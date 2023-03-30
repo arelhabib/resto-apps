@@ -5,11 +5,11 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert("FIjunctions", [
       {
-        foodId: 1,
+        foodId: 2,
         ingredientId: 1,
       },
       {
-        foodId: 1,
+        foodId: 2,
         ingredientId: 2,
       },
     ]);

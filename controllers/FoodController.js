@@ -133,19 +133,23 @@ class FoodController {
 
       let resultFI = {};
       let ingredients = [];
+      let ingredientsTotal = 0;
 
       if (result.length === 0) {
         result = await food.findByPk(id);
         resultFI = {
           ...result.dataValues,
+          ingredientsTotal,
           ingredients,
         };
       } else {
         ingredients = result.map((el) => {
+          ingredientsTotal += el.ingredient.dataValues.price;
           return el.ingredient.dataValues;
         });
         resultFI = {
           ...result[0].food.dataValues,
+          ingredientsTotal,
           ingredients,
         };
       }
